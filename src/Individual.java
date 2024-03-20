@@ -46,7 +46,10 @@ public class Individual implements Comparable<Individual>{
 		return 0;
 	}
 	
-	
+	//Um gleich Ort nicht 2 mals zu besuchen, benutzt man Partially Mapped Crossover(PMX),
+	//PMX tauschen nicht nur Elemente aus 2 Eltern, auch tauschen die Elemente in den Eltern.
+	//Hier benutzt man Collections.swap() Methode. Man bekommt am Ende ein Kind. 
+
 	public  Individual crossover(Individual partner) {
 		int breakpoint=(int)(Math.random()*this.order.length);
 		
@@ -74,7 +77,9 @@ public class Individual implements Comparable<Individual>{
 	}
 	
 	public void mutate(float mutationChances) {
-		
+		//zu mutieren zufällig benutzt man auch Collections.swap(),
+		//die 2 getauschte Orte werden werden mit random.nextInt() erzeugt. 
+		//Dann am Ende bekommt die Eltern ein Mutationskind. 
 		Random random=new Random();
 		float mutatepoint=random.nextFloat();
 		if(mutatepoint<=mutationChances) {
